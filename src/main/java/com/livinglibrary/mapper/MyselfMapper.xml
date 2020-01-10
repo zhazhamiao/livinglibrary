@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.livinglibrary.mapper.MyselfMapper">
+	<select id="getPostList" parameterType="map" resultType="com.livinglibrary.po.FpostList">
+    	select A.postid,A.time,B.nickname,B.user_head,A.title,A.summary,A.looknum,A.commentnum,A.follownum from forumpost A,forumuser B where A.author = B.id and A.category like CONCAT('%',#{categoryid},'%')   and A.status=1 
+  	</select>
+
+	<select id="getCommentList" parameterType="map" resultType="com.livinglibrary.po.FcommentsList">
+    	select A.commentid,A.parentid,A.replaycontent,A.addtime,B.nickname,B.user_head from forumcomment A,forumuser B where A.userid = B.id and A.postid =#{postid} order by #{order} 
+  	</select>
+  	
+  	<select id="getRoleListBystuid" parameterType="String" resultType="com.livinglibrary.po.Role">
+    	select B.* from role B,user_role C where C.uid = #{stuid} and C.roleid= B.id  
+  	</select>
+  	<select id="getPermissionsByroleid" parameterType="Integer" resultType="com.livinglibrary.po.Permission">
+    	select B.* from role_permission A, permission B where A.role_id = #{roleid} and A.permission_id = B.id; 
+  	</select>
+  	<select id="getYuyue" parameterType="Integer" resultType="com.livinglibrary.po.YuyueState">
+    	select A.guestId,C.Address,A.stuid,B.`name`,B.college,B.phone,A.status from registrationrecord A,user B,guest C where A.guestId = #{guestid} and B.stuid = A.stuid and A.guestId = C.GuestId
+  	</select>
+  	<select id="getStuYuyue" parameterType="String" resultType="com.livinglibrary.po.StuYuyue">
+    	SELECT A.GuestId,A.GuestName,A.Address,A.BeginTime,B.state FROM `guest` A,registrationrecord B where B.stuid = #{stuid} and A.GuestId = B.guestId
+  	</select>
+  	<select id="loadBoardMessage" parameterType="Integer" resultType="com.livinglibrary.po.Boardmessage">
+    	SELECT * FROM `boardmessage`  where guestid = 0 GROUP BY content
+  	</select>
+  	
+  	<select id="getAdminList" parameterType="Integer" resultType="com.livinglibrary.po.AdminList">
+    	SELECT B.stuid,B.name,B.phone,B.email,C.description,A.addtime,B.state FROM `user_role` A,user B,role C where B.stuid=A.uid and A.roleid = C.id and B.state &lt;&gt; 3 and B.type=#{type} 
+  	</select>
+  	<select id="searchAdminList" parameterType="map" resultType="com.livinglibrary.po.AdminList">
+    	SELECT * FROM `user` A,user_role B where A.stuid = B.uid and B.addtime BETWEEN #{start} and #{end} and A.stuid like #{username} and A.type=2
+  	</select>
+  	<select id="searchAdminListWithoutTime" parameterType="String" resultType="com.livinglibrary.po.AdminList">
+    	SELECT * FROM `user` A,user_role B where A.stuid = B.uid  and A.name like #{username} 
+  	</select>
+  	<select id="getVedioByTypeidlimit" parameterType="Integer" resultType="com.livinglibrary.po.Vedio">
+    	SELECT * FROM `Vedio` where typeid = #{typeid} order by createtime desc limit 3
+  	</select>
+</mapper>

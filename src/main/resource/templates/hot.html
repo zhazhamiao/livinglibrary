@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="../js/echarts.min.js"></script> 
+	<title></title>
+</head>
+<body>
+	<div id="main" style="height:550px;width:1100px;"></div>  
+	<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        var dataAxis = ['yh', '通仔', 'xcc', 'fb', 'yt', 'xgg', 'jjjj', 'fbm', 'alkk', 'dada', 'xxssx', 'xsla', 'xds', 'xc', 'hhh',];
+        var data = [20, 12, 11, 24, 29, 33, 31, 12, 4, 15, 9, 4, 2, 52, 32];
+        var yMax = 60;
+        var dataShadow = [];
+
+        for (var i = 0; i < data.length; i++) {
+            dataShadow.push(yMax);
+        }
+        var option = {
+        		title: {
+        	        text: '真人书的点击量',
+        	        subtext: '通过点击率判断其热度！'
+        	    },
+        	    xAxis: {
+        	        data: dataAxis,axisLabel: {        	            
+        	        },
+        	    },
+        	    
+        	    yAxis: {
+        	        axisLine: {
+        	            show: false
+        	        },
+        	        axisTick: {
+        	            show: false
+        	        },
+        	        axisLabel: {
+        	            textStyle: {
+        	                color: '#999'
+        	            }
+        	        }
+        	    },
+        	    tooltip: {},
+        	    legend: {
+                    data:['销量']
+                },
+        	    dataZoom: [
+        	        {
+        	            type: 'inside'
+        	        }
+        	    ],
+        	   
+        	    series: [
+        	        { // For shadow
+        	            type: 'bar',
+        	            itemStyle: {
+        	                normal: {color: 'rgba(0,0,0,0.05)'}
+        	            },
+        	            barGap:'-100%',
+        	            barCategoryGap:'40%',
+        	            data: dataShadow,
+        	            animation: false
+        	        },
+        	        {
+        	            type: 'bar',
+        	            itemStyle: {
+        	                normal: {
+        	                    color: new echarts.graphic.LinearGradient(
+        	                        0, 0, 0, 1,
+        	                        [
+        	                            {offset: 0, color: '#83bff6'},
+        	                            {offset: 0.5, color: '#188df0'},
+        	                            {offset: 1, color: '#188df0'}
+        	                        ]
+        	                    )
+        	                },
+        	                emphasis: {
+        	                    color: new echarts.graphic.LinearGradient(
+        	                        0, 0, 0, 1,
+        	                        [
+        	                            {offset: 0, color: '#2378f7'},
+        	                            {offset: 0.7, color: '#2378f7'},
+        	                            {offset: 1, color: '#83bff6'}
+        	                        ]
+        	                    )
+        	                }
+        	            },
+        	            data: data
+        	        }]
+            };
+        	var zoomSize = 6;
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+            myChart.on('click', function (params) {
+                console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
+                myChart.dispatchAction({
+                    type: 'dataZoom',
+                    startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
+                    endValue: dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
+                });
+            });
+	</script>
+</body>
+</html>

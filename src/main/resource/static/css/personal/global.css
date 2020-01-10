@@ -1,0 +1,298 @@
+@font-face {
+	font-family: global;
+	src: url(../images/global.eot);
+	src: url(../images/global.eot?#iefix) format("embedded-opentype"), url(../images/global.woff2) format("woff2"), url(../images/global.woff) format("woff"), url(../images/global.ttf) format("truetype"), url(../images/global.svg) format("svg");
+	font-weight: 400;
+	font-style: normal
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	@font-face {
+		font-family: global;
+		src: url(../images/global.svg) format("svg")
+	}
+}
+
+[data-icon]:before {
+	content: attr(data-icon)
+}
+
+.icon-nc-book:before,
+.icon-nc-close:before,
+.icon-nc-codelogin:before,
+.icon-nc-coin:before,
+.icon-nc-comfirm:before,
+.icon-nc-company:before,
+.icon-nc-copy:before,
+.icon-nc-del:before,
+.icon-nc-delete:before,
+.icon-nc-edit2:before,
+.icon-nc-edit:before,
+.icon-nc-empty:before,
+.icon-nc-face1:before,
+.icon-nc-face2:before,
+.icon-nc-face3:before,
+.icon-nc-file:before,
+.icon-nc-fire:before,
+.icon-nc-flag:before,
+.icon-nc-flash2:before,
+.icon-nc-flash:before,
+.icon-nc-hui:before,
+.icon-nc-invalid:before,
+.icon-nc-invite:before,
+.icon-nc-job-arrow-up:before,
+.icon-nc-job:before,
+.icon-nc-life:before,
+.icon-nc-medal:before,
+.icon-nc-minus:before,
+.icon-nc-money:before,
+.icon-nc-msg:before,
+.icon-nc-offline:before,
+.icon-nc-online:before,
+.icon-nc-pclogin:before,
+.icon-nc-phone:before,
+.icon-nc-pie:before,
+.icon-nc-plus:before,
+.icon-nc-qa:before,
+.icon-nc-qq:before,
+.icon-nc-reset:before,
+.icon-nc-scan:before,
+.icon-nc-school:before,
+.icon-nc-search:before,
+.icon-nc-send:before,
+.icon-nc-share:before,
+.icon-nc-teach:before,
+.icon-nc-text:before,
+.icon-nc-tips-close:before,
+.icon-nc-validate:before,
+.icon-nc-wallet:before,
+.icon-nc-wechat:before,
+.icon-nc-yen:before,
+.icon-nc-zan1:before,
+.icon-nc-zan2:before,
+[data-icon]:before {
+	display: inline-block;
+	font-family: global;
+	font-style: normal;
+	font-weight: 400;
+	font-variant: normal;
+	line-height: 1;
+	text-decoration: inherit;
+	text-rendering: optimizeLegibility;
+	text-transform: none;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased
+}
+
+.icon-nc-book:before {
+	content: "\f11a"
+}
+
+.icon-nc-close:before {
+	content: "\f10f"
+}
+
+.icon-nc-codelogin:before {
+	content: "\f129"
+}
+
+.icon-nc-coin:before {
+	content: "\f12f"
+}
+
+.icon-nc-comfirm:before {
+	content: "\f11f"
+}
+
+.icon-nc-company:before {
+	content: "\f11b"
+}
+
+.icon-nc-copy:before {
+	content: "\f104"
+}
+
+.icon-nc-del:before {
+	content: "\f120"
+}
+
+.icon-nc-delete:before {
+	content: "\f105"
+}
+
+.icon-nc-edit:before {
+	content: "\f106"
+}
+
+.icon-nc-edit2:before {
+	content: "\f110"
+}
+
+.icon-nc-empty:before {
+	content: "\f121"
+}
+
+.icon-nc-face1:before {
+	content: "\f113"
+}
+
+.icon-nc-face2:before {
+	content: "\f114"
+}
+
+.icon-nc-face3:before {
+	content: "\f115"
+}
+
+.icon-nc-file:before {
+	content: "\f128"
+}
+
+.icon-nc-fire:before {
+	content: "\f122"
+}
+
+.icon-nc-flag:before {
+	content: "\f116"
+}
+
+.icon-nc-flash:before {
+	content: "\f123"
+}
+
+.icon-nc-flash2:before {
+	content: "\f130"
+}
+
+.icon-nc-hui:before {
+	content: "\f117"
+}
+
+.icon-nc-invalid:before {
+	content: "\f12a"
+}
+
+.icon-nc-invite:before {
+	content: "\f111"
+}
+
+.icon-nc-job:before {
+	content: "\f11c"
+}
+
+.icon-nc-job-arrow-up:before {
+	content: "\f102"
+}
+
+.icon-nc-life:before {
+	content: "\f11d"
+}
+
+.icon-nc-medal:before {
+	content: "\f124"
+}
+
+.icon-nc-minus:before {
+	content: "\f131"
+}
+
+.icon-nc-money:before {
+	content: "\f125"
+}
+
+.icon-nc-msg:before {
+	content: "\f10a"
+}
+
+.icon-nc-offline:before {
+	content: "\f107"
+}
+
+.icon-nc-online:before {
+	content: "\f108"
+}
+
+.icon-nc-pclogin:before {
+	content: "\f12b"
+}
+
+.icon-nc-phone:before {
+	content: "\f12c"
+}
+
+.icon-nc-pie:before {
+	content: "\f10b"
+}
+
+.icon-nc-plus:before {
+	content: "\f132"
+}
+
+.icon-nc-qa:before {
+	content: "\f10c"
+}
+
+.icon-nc-qq:before {
+	content: "\f126"
+}
+
+.icon-nc-reset:before {
+	content: "\f133"
+}
+
+.icon-nc-scan:before {
+	content: "\f12d"
+}
+
+.icon-nc-school:before {
+	content: "\f11e"
+}
+
+.icon-nc-search:before {
+	content: "\f109"
+}
+
+.icon-nc-send:before {
+	content: "\f10d"
+}
+
+.icon-nc-share:before {
+	content: "\f112"
+}
+
+.icon-nc-teach:before {
+	content: "\f127"
+}
+
+.icon-nc-text:before {
+	content: "\f10e"
+}
+
+.icon-nc-tips-close:before {
+	content: "\f103"
+}
+
+.icon-nc-validate:before {
+	content: "\f12e"
+}
+
+.icon-nc-wallet:before {
+	content: "\f118"
+}
+
+.icon-nc-wechat:before {
+	content: "\f100"
+}
+
+.icon-nc-yen:before {
+	content: "\f119"
+}
+
+.icon-nc-zan1:before {
+	content: "\f134"
+}
+
+.icon-nc-zan2:before {
+	content: "\f135"
+}

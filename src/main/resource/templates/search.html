@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>真人图书馆</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap4.min.css" />
+		<link rel="stylesheet" href="../css/font-awesome.min.css" /> 
+		<link rel="stylesheet" type="text/css" href="../css/search.css" />
+		
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.cookie.js"></script>
+		<script src="js/bootstrap4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/bootstrap-paginator.min.js"></script>
+		<script src="js/search.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/delayLoading.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="all">
+			   <div id="head">
+		            <a href="http://lib.nchu.edu.cn/"><img src="../images/biaoti.jpg"/></a>
+		        </div>
+		        <div class="row">
+			        <div class="col-lg-8  col-sm-8 col-xs-8" id="nav_s">
+			        	<ul>
+			        		<li ><a href="">首页</a></li>
+			        		<li><a href="">论坛</a></li>
+			        		<li><a href="">直播</a></li>
+			        		<li><a href="">更多</a></li>
+			        	</ul>
+			        </div>
+					<div class="col-lg-3 col-sm-4 col-xs-4" id="s_login">
+						<span id="d_login">尚未登录，请点击进行<a href="/login" class="noline">登录</a></span>
+						<p id="h_login">欢迎您&nbsp;&nbsp;<a id="s_name" class="noline"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="logout" class="noline">安全退出</a></p>
+					</div>
+				</div>
+				<div id="dis">
+			        <div id="nav">
+			            <div class="row">
+			                <div class="col-lg-6 col-sm-6 col-xs-6" id="s_nav">
+			                	<nav aria-label="breadcrumb">
+				                    <ol class="breadcrumb">
+				                        <li class="breadcrumb-item"><a href="http://www.nchu.edu.cn/">南昌航空大学</a></li>
+				                        <li class="breadcrumb-item"><a href="http://lib.nchu.edu.cn/">图书馆</a></li>
+				                        <li class="breadcrumb-item active">真人图书馆</li>
+				                    </ol>
+			                    </nav>
+			                </div>
+			                <div class="col-lg-6 col-sm-6 col-xs-6">
+			                    <div class="input-group">
+			                         <input id="s_input" type="text" value="" class="form-control" placeholder="请输入姓名！">
+			                          <span class="input-group-btn">
+			                            <button id="s_btn" class="btn btn-outline-primary" type="button">搜索<i class="fa fa-search"></i></button>
+			                          </span>
+			
+			                    </div><!-- /input-group -->
+			                </div> 
+			            </div>
+		        </div>
+				
+				<div id="main">
+					<div id="carousel-box" class="carousel slide carousel-fade" data-ride="carousel" data-interval="4000">
+
+						<!-- 指示符 -->
+						<ul class="carousel-indicators" id="play-tag"></ul>
+
+						<!-- 轮播图片 -->
+						<div class="carousel-inner" id="img-box"></div>
+
+						<!-- 左右切换按钮 -->
+						<a class="carousel-control-prev left" href="#carousel-box" data-slide="prev">
+							<span class="carousel-control-prev-icon"></span>
+						</a>
+						<a class="carousel-control-next right" href="#carousel-box" data-slide="next">
+							<span class="carousel-control-next-icon"></span>
+						</a>
+
+					</div>
+					<div id="main-part">
+						<div class="showp">
+							<div class="showp-head">
+								<h3><kbd class="category-title">近期相约</kbd></h3>
+								<h5 class="clearFix"><a href="/more?GuestType=1"><kbd class="showp-more">更多>>></kbd></a></h5>
+							</div>
+							<div class="showp-con">
+								<div class="row showp-con-right" id="early">
+									
+								</div>
+							</div>
+						</div>
+
+						<div class="showp">
+							<div class="showp-head">
+								<h3><kbd class="category-title">杰出校友</kbd></h3>
+								<h5 class="clearFix"><a href="/more?GuestType=2"><kbd class="showp-more">更多>>></kbd></a></h5>
+							</div>
+							<div class="showp-con">
+								<div class="row showp-con-right" id="mates">
+									
+								</div>
+							</div>
+						</div>
+						<div class="showp">
+							<div class="showp-head">
+								<h3><kbd class="category-title">社会代表</kbd></h3>
+								<h5 class="clearFix"><a href="/more?GuestType=3"><kbd class="showp-more">更多>>></kbd></a></h5>
+							</div>
+							<div class="showp-con">
+								<div class="row showp-con-right" id="social">
+									
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			  </div>
+		<div id="result" style="margin: 20px auto;">
+					<div id="s_xian" class="row"></div>
+					
+					<div id="example">
+						<ul id="pageLimit"></ul>
+					</div>
+				</div>
+        <div id="foot">
+            <hr align="center" width="80%"/>
+            <p>相关链接:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://gxszk.nchu.edu.cn/">省高校思政网</a>&nbsp;&nbsp;<a href="http://tsg.jxnu.edu.cn/tgw/">省高校团工委</a>Copyright© 南昌航空大学图书馆,All Rights Reserved ;</p>
+            <p>管理员email ：niatliby@163.com  Tel：83863778转8016 83953350</p>
+        </div>
+
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./js/xadmin.js"></script>
+    
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  <body>
+    <div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">通知管理</a>
+        <a>
+          <cite>全部通知</cite></a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+    </div>
+    <div class="x-body">
+      <xblock>
+       <button class="layui-btn layui-btn-normal" >全部通知</button>
+        <span class="x-right" style="line-height:40px">共有数据：<span class="static"></span>条</span>
+      </xblock>
+      <table class="layui-table layui-form">
+        <thead>
+          <tr>
+            <th width="20">
+              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+            </th>
+            <th width="140">内容</th>
+            <th width="70">发布时间</th>
+            <th width="180">操作</th>
+        </thead>
+        <tbody class="x-cate">
+         
+        </tbody>
+      </table>
+      <div class="page">
+			<div>
+				
+			</div>
+		</div>
+    </div>
+    <script>
+    
+    $(function(){
+   	 /**
+       **加载评论 参数0--加载未审核评论，-1--加载所有评论
+       **/
+       var cout = 10;
+   	 var total=0
+   	loadallnotice(1,cout);
+       function loadallnotice(page,count){
+    	   $(".x-cate").empty();
+       	$(".page").find("div").empty();
+       	 $.ajax({
+       	    	url:"/loadAllNotice",
+       	    	type:"POST",
+       	    	data:{
+       	    		
+       	    		page:page,
+       	    		count:count
+       	    	},
+       	    	success:function(data){
+       	    		console.log(data);
+       	    		$(".static").html(data.records);
+       	    		
+       	    		var state;
+       	    		$.each(data.rows,function(idx,obj){
+       	    			
+       	    			
+       	    			$(".x-cate").append('<tr cate-id='+idx+'><td><div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='+idx+'><i class="layui-icon">&#xe605;</i></div></td><td>'+
+       	    					obj.content+'</td>=<td>'+
+       	    					obj.pubtime+'</td><td class="td-manage">'+
+       			              	'<button class="layui-btn-danger layui-btn layui-btn-xs"  onclick="notice_del(this,\''+obj.content+'\')" href="javascript:;" ><i class="layui-icon">&#xe640;</i>删除</button>'+
+       			            	'</td></tr>');
+       	    		});
+       	    		var text=' <a class="prev" href="#">&lt;&lt;</a>';
+    				total = data.total;
+    				for(var i=1;i<=data.total;++i){
+    					if(i==data.page)
+    						text+=' <span class="current" href="#">'+i+'</span>';
+    					else
+    						text+=' <a class="num" href="#">'+i+'</a>'
+    				}
+    				
+    				$(".page").find("div").append(text+' <a class="next" href="#">&gt;&gt;</a>')
+       	    	},
+       	    	error:function(data){
+       	    		layer.msg("连接超时");
+       	    	}
+       	    })
+       }  
+       $(".page").find("div").on("click",".num",function(){
+    	   loadallnotice($(this).html(),cout);
+	 	})
+	 	$(".page").find("div").on("click",".prev",function(){
+	 		var cur = $(".page").find("div .current").html();
+	 		if(cur>1)
+	 			loadallnotice(cur-1,cout);
+	 	})
+	 	$(".page").find("div").on("click",".next",function(){
+	 		var cur = $(".page").find("div .current").html();
+	 		if(cur<total)
+	 			loadallnotice(parseInt(cur)+1,cout);
+	 	})
+   })
+     
+   
+      layui.use(['form'], function(){
+        form = layui.form;
+        
+      });
+
+     
+      /*评论-删除*/
+      function notice_del(obj,content){
+          layer.confirm('确认要删除吗？',function(index){
+              //发异步删除数据
+              
+               $.ajax({
+    		  url:"/delNotice",
+    		  type:"POST",
+    		  data:{
+    			  
+    			  content:content, //隐藏
+    		  },
+    		  success:function(data){
+    			  if(data==1){
+    				//发异步通过数据
+    					$(obj).parents("tr").remove();
+    		           layer.msg('已删除!',{icon:1,time:500});
+    			  }else{
+    				  layer.msg('删除失败!',{icon:1,time:500});
+    			  }
+    		  }
+    	  });
+              
+             
+          });
+      }
+
+   
+      
+
+    </script>
+  </body>
+
+</html>

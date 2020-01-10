@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/detial.css"/>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/detial.js"></script>
+    <title>详情介绍</title>
+</head>
+<body>
+<div id="all">
+    <div id="head">
+        <a href="http://lib.nchu.edu.cn/"><img src="../images/biaoti.jpg" class="img-responsive" ></a>
+    </div>
+
+    <div id="nav">
+                <ol class="breadcrumb">
+                    <li><a href="http://www.nchu.edu.cn/">南昌航空大学</a></li>
+                    <li><a href="http://lib.nchu.edu.cn/">图书馆</a></li>
+                    <li><a href="/index">真人图书馆</a></li>
+                    <li class="active">详情介绍</li>
+                </ol>
+        </div>
+        <span id="d_id" th:text="${GuestId}"></span>
+    <div id="main">
+        <button id="order" type="button" class="btn btn-info">预约</button>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">预约</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="ynumber">学号</label>
+                        <input type="text" name="ynumber" class="form-control" id="ynumber" placeholder="请输入学号！">
+                    </div>
+                    <div class="form-group">
+                        <label for="yname">姓名</label>
+                        <input type="text" name="yname" class="form-control" id="yname" placeholder="请输入姓名！">
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 提交</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> 取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+</body>
+</html>

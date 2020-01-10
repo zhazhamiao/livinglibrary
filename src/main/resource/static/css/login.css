@@ -1,0 +1,40 @@
+body{
+    background: white;
+}
+#all{
+    margin:3px auto;
+    max-width:960px;
+
+}
+#main{
+    margin:50px 0;
+    display: block;
+}
+h3{
+    margin:25px 0;
+    text-align: center;
+}
+#m_left{
+    margin:0;
+    padding: 0;
+}
+#m_right{
+    background: linear-gradient(180deg,#96D1EF,#ADD8E6);
+    border: 2px solid lightgray;
+    border-radius: 6px;
+    height:318px;
+}
+#l_btn{
+    margin: 25px 0 0 65px;
+    width:80%;
+}
+#b_login{
+    width: 80%;
+    font-size:14px;
+}
+#b_reset{
+    width:80%
+}
+#error{
+	display:none;
+}

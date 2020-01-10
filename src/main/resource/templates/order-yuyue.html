@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./lib/layui/layui.all.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./js/xadmin.js"></script>
+    
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  <body>
+   <div class="x-nav">
+		<span class="layui-breadcrumb"> <a href="">首页</a> <a href="">演示</a>
+			<a> <cite>预约信息</cite></a>
+		</span> <a class="layui-btn layui-btn-small"
+			style="line-height: 1.6em; margin-top: 3px; float: right"
+			href="javascript:location.replace(location.href);" title="刷新"> <i
+			class="layui-icon" style="line-height: 30px">ဂ</i></a>
+	</div>
+    <div class="x-body">
+    <div class="layui-row">
+			<form class="layui-form layui-col-md12 x-so">
+				<div class="layui-input-inline">
+		            <select id="contrller" name="contrller">
+		             
+		             
+		            </select>
+		          </div>
+				<button class="layui-btn" lay-submit="" lay-filter="sreach">
+					<i class="layui-icon">&#xe615;</i>
+				</button>
+			</form>
+		</div>
+      <xblock>
+       <button class="layui-btn layui-btn-info" onclick="export1()"><i class="iconfont">&#xe6a2;</i> 导出</button>
+        <span class="x-right" style="line-height:40px">共有数据：<span class="static"></span>条</span>
+      </xblock>
+      <table id="yuyuetable" class="layui-table layui-form" lay-filter="yuyuetable">
+        <thead>
+          <tr>
+            <th width="20">
+              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+            </th>
+            <th>活动名</th>
+            <th>学号</th>
+            <th>用户名</th>
+            <th>学校</th>
+            <th>手机号码</th>
+            <th>状态</th>
+        </thead>
+        <tbody class="x-cate">
+         
+        </tbody>
+      </table>
+    </div>
+    <script>
+   
+
+	 function export1(){
+		
+	    	 layui.use('table', function(){
+	    		var table = layui.table;
+	    		
+	    		
+	    		$.ajax({
+	        		url:"/orderyuyue",
+	        		type:"POST",
+	        		data:{
+	        			guestid:$("#contrller").find("option:selected").val()
+	        		},
+	        		success:function(data){  
+	        			console.log(data);
+	        			//将上述表格示例导出为 csv 文件
+	    	      		table.exportFile(['讲座名','学校','讲座id','用户名','电话号码','状态','用户id'], data); //data 为该实例中的任意数量的数据
+	        		}
+	        	})
+	    	}); 
+	    	
+	    	
+	    }
+    
+    
+    $(function(){
+
+    	
+    	
+    	
+    	$.ajax({				        	
+            url:'/getList',	
+            type:'POST',
+            data:{'page':1,'count':60},
+            dataType:'JSON',
+            async:false,
+            success:function (data){
+            	 $.each(data.rows,function(idx,obj){
+            		 $("#contrller").append('<option value='+obj.guestid+'>'+obj.guestname+' '+obj.address+'</option>');
+            	 });
+            	 
+            	 loadyuyue($("#contrller").find("option:selected").val())
+            }
+        });
+    	function loadyuyue(guestid){
+    		$.ajax({
+        		url:"/orderyuyue",
+        		type:"POST",
+        		data:{
+        			guestid:guestid
+        		},
+        		success:function(data){
+        			$(".static").html(data.length);
+        			 $(".x-cate").empty();
+        			 $.each(data,function(idx,obj){
+                		 
+              			if(obj.status==true){
+              				 $(".x-cate").append('<tr><td><div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='+idx+'><i class="layui-icon">&#xe605;</i></div></td><td>'+
+                 					obj.address+'</td><td class="stuid">'+
+                 					obj.stuid+'</td><td>'+
+                 					obj.name+'</td><td>'+
+                 					obj.college+'</td><td>'+
+                 					obj.phone+'</td><td><input class="status" type="checkbox" name="status" lay-skin="switch" lay-filter="switchTest" lay-text="已到|未到" checked></td></tr>')	
+              			}else{
+              				$(".x-cate").append('<tr><td><div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='+idx+'><i class="layui-icon">&#xe605;</i></div></td><td>'+
+                 					obj.address+'</td><td class="stuid">'+
+                 					obj.stuid+'</td><td>'+
+                 					obj.name+'</td><td>'+
+                 					obj.college+'</td><td>'+
+                 					obj.phone+'</td><td><input class="status" type="checkbox" name="status" lay-filter="switchTest" lay-skin="switch" lay-text="已到|未到"></tr>')	
+              			}
+              			
+                		
+                	 });
+        			 layui.use(['form','layer'], function(){
+        	             $ = layui.jquery;
+        	           var form = layui.form
+        	           ,layer = layui.layer;
+        	         
+        	           //自定义验证规则
+        	           //监听提交
+				          
+				            //监听开关事件
+				            form.on('switch(switchTest)', function (data) {
+				                var contexts;
+				                var x = data.elem.checked;//判断开关状态
+				                //alert($(this).parent.find(".stuid").html())
+				                  $.ajax({
+									url:"/alertYuYueStatus",
+									type:"POST",
+									data:{
+										status:x,
+										guestid:guestid,
+										stuid:$(data.elem.parentNode.parentNode).find(".stuid").html()
+									},
+									success:function(data){
+										if(data==1){
+											layer.msg("操作成功",{icon:6,time:1000});
+										}else{
+											layer.msg("操作失败",{icon:5,time:1000});
+										}
+									}
+								})  
+				              
+				            });
+				            form.render();
+				        });
+        	           
+        	           
+        	         
+        			
+        		}
+        	})
+    	}
+    
+
+    	 layui.use(['form','layer'], function(){
+             $ = layui.jquery;
+           var form = layui.form
+           ,layer = layui.layer;
+         
+           //自定义验证规则
+           //监听提交
+           form.on('submit(sreach)', function(data){
+             loadyuyue(data.field.contrller);
+             
+               
+             return false;  
+           });  
+         });
+         
+      
+      
+      
+      });
+    
+  
+
+    </script>
+  </body>
+
+</html>

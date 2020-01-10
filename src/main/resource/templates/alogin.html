@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/bootstrap4.min.css" />
+        <link rel="stylesheet" href="../css/alogin.css"/>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.cookie.js"></script>
+        <script type="text/javascript" src="js/bootstrap4.min.js"></script>
+        <script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" src="js/alogin.js"></script>
+	</head>
+
+	<body>
+		<div id="all">
+			<nav class="navbar navbar-expand-md navbar-light">
+				<a class="navbar-brand" href="#">NCHU-LL</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+				<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="/aindex">首页</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">消息  </a>
+							<div class="dropdown-menu" style="padding:0;margin:0;">
+								<div class="card" style="width: 23rem;padding:0;margin:0;">
+								  <div class="card-body" style="padding:0;margin:0;">
+								    <div class="list-group notice">
+									 
+									</div>
+								  </div>
+								</div>
+							</div>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="/avedio">直播</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link personal" href="#">个人中心</a>
+						</li>
+						<!-- <li class="nav-item">
+							<a class="nav-link" href="#" id="navbardrop" >
+								消息 <span class="badge badge-danger">4</span>
+							</a> -->
+						<!-- 	<div class="dropdown-menu">
+								<a class="dropdown-item" href="#">轻云蔽月</a>
+								<a class="dropdown-item" href="#">流风回雪</a>
+								<a class="dropdown-item" href="#">翩若惊鸿</a>
+								<a class="dropdown-item" href="#">婉若游龙</a>
+							</div> -->
+						</li>
+						
+						
+						
+						<li class="nav-item">
+							<a class="nav-link" href="/alogin" id="d_login">登录</a>
+							
+						</li>
+						
+						
+						<li class="nav-item" id="register">
+							<a class="nav-link" href="#">注册</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<div class="container">
+				
+				<div id="main" class="row">
+					<div id="l-left" class="col-md-6 col-lg-6">
+						<img src="../images/tushuguan.jpg" id="left-img"/>
+					</div>
+					<div id="l-right" class="col-md-6 col-lg-6">
+						<h3 class="text-center">用户登录</h3>
+						<form id="form">
+							<div class="form-group">
+								<label id="l_xuehao" for="i_xuehao">学号:</label>
+								<input type="text" id="num" class="form-control" placeholder="请输入学号"/>
+							</div>
+							<div class="form-group">
+								<label for="lastname">密码:</label>
+								<input type="password" id="password" class="form-control" placeholder="请输入密码"/>
+							</div>
+							<div class="form-group">
+								<label>类别：</label>
+								<select id="l_select" class="form-control" onchange="SelectChange()">
+									<option value="1" selected>学生</option>
+									<option value="2">管理员</option>
+									
+								</select>
+							</div>
+							<div class="row">
+								<div class="input-group col-md-6 col-lg-6">
+									<button type="button" id="b_login" class="btn btn-success">登录</button>
+								</div>
+								<div class="input-group col-md-6 col-lg-6">
+									<button type="reset" class="btn btn-success" id="b_reset">重置</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					
+				</div>
+				
+				<!--<div id="main" class="row">
+					<div id="m_left" class="col-md-6 col-lg-6">
+						<img src="img/tushuguan.jpg" id="left-img" />
+					</div>
+					<div id="m_right" class="col-md-6 col-lg-6">
+						<h3>用户登录</h3>
+						<form class="form-horizontal" id="l_form" name="l_form" role="form">
+							<div class="form-group">
+								<label id="l_xuehao" for="i_xuehao" class="col-sm-2 control-label">学号:</label>
+								<div class="col-sm-10">
+									<input id="num" name="num" type="text" class="form-control" placeholder="请输入学号">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="lastname" class="col-sm-2 control-label">密码:</label>
+								<div class="col-sm-10">
+									<input type="password" name="password" class="form-control" id="password" placeholder="请输入密码  ">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">类型:</label>
+								<div class="col-sm-10 ">
+									<select id="l_select" name="type" class="form-control" onchange="SelectChange()">
+										<option value="1" selected>学生</option>
+										<option value="2">教师</option>
+										<option value="3">管理员</option>
+										<option value="4">超级管理员</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group row" id="l_btn">
+								<div class="col-sm-6 col-md-6 col-lg-6">
+									<button type="button" id="b_login" class="btn btn-primary">登录</button>
+								</div>
+								<div class="col-sm-6 col-md-6 col-lg-6">
+									<button type="reset" id="b_reset" class="btn btn-info">重置</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>-->
+			</div>
+			<hr />
+			<div id="foot">
+				<!--<hr style="background-color: #fff;"/>-->
+				<div id="" align="center">
+					<p>Copyright© 南昌航空大学图书馆,All Rights Reserved</p>
+
+					<p>管理员email：niatliby@163.com Tel：83863778转8016 83953350&nbsp;
+						<span>相关链接:&nbsp;
+						        <a href="http://gxszk.nchu.edu.cn/">省高校思政网</a>&nbsp;
+						        <a href="http://tsg.jxnu.edu.cn/tgw/">省高校团工委</a>
+						    </span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,122 @@
+body{
+	background: #F5F5F5;
+}
+a:hover{
+	text-decoration: none;
+}
+nav{
+	background: #F5F5F5;
+}
+/* .center{
+	
+	position:relative;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+} */
+.container{
+	width: 100%;
+	margin-bottom:50px;
+	/*background: #F5F5F5;*/
+}
+.showp-head{
+	position: relative;
+}
+#person-img{
+	width: 100%;
+	max-height: 520px;
+	min-height: 360px;
+	border-radius: 10px 0 0 10px;
+}
+#detail{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	max-height: 520px;
+	background-color: #fff;
+	border-radius: 10px;
+}
+#left-img{
+	margin: 0;
+	padding: 0;
+}
+#person-info{
+	position: relative;
+	width: 100%;
+	max-height: 520px;
+	margin-top:20px;
+	/*background-color: lightgray;*/
+}
+#info-con{
+	margin-top:10px;
+	width: 100%;
+	height: 500px;
+	overflow: auto;
+	position: relative;
+	background-c	olor: #fff;
+	/*top: 50%;
+	transform: translateY(-50%);*/
+}
+#m-show{
+	
+}
+#order-btn1{
+	float:right;
+	margin-right:40px;
+	padding:10px;
+}
+#order-btn{
+	margin:0 10px 0 10px;
+}
+#d_id,#d_date,#d_tip,#welcome,#out{
+	display:none;
+}
+#btn-box{
+	
+}
+#myModal .modal-dialog{
+    width:360px;
+}
+#order-btn,#ynumber,#yname,#btn_submit{
+	box-shadow: none;
+}
+
+#text-box{
+	padding:10px;
+	border-bottom:1px solid lightgray;
+	zoom: 1;
+}
+#text-box:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+#textarea{
+	width:100%;
+	height:60px;
+	resize: none;
+	outline:none;
+	border-radius:6px;
+}
+#send-btn{
+	float: right;
+}
+#text-box span{
+	color:darkgray;
+}
+#words-list{
+	padding:10px;
+}
+.words-item{
+	border-bottom:1px dashed lightgray;
+}
+.words-item h5{
+	margin-top: 10px;
+	display:inline-block;
+}
+.words-item a{
+	margin-top:10px;
+}
+#btn_cancel{
+	display:none;
+}

@@ -1,0 +1,92 @@
+body{
+    background: url(../images/bg.png);
+}
+#all{
+    margin:0 auto;
+    padding:0;
+    width:990px;
+    /* min-width:960px;
+    max-width:960px; */
+    background-color:#fff;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    
+}
+#head{
+    margin:2px auto;
+    border-radius:3px;
+}
+#head img{
+	width:990px;
+}
+#nav{
+    margin:10px 2px;
+    height:8px;
+}
+.breadcrumb{
+    width:360px;
+    background-color: white;
+}
+#main{
+    position: relative;
+    height: 400px;
+    width:100%;
+    margin:40px 18px 5px 0;
+    border: 1px solid lightgray;
+   
+}
+#d_photo{
+    margin: 5px;
+    height: 300px;
+    width: 250px;
+}
+#main button{
+    width: 100px;
+    position: absolute;
+    left: 50%;
+    top: 90%;
+    transform: translate(-50%,-50%);
+}
+.jieshao{
+    padding:5px;
+    float: right;
+    width: 620px;
+    height: 300px;
+    margin: 5px;
+}
+#myModal .modal-dialog{
+    width:350px;
+}
+#d_id,#d_time,#d_date,#d_tip{
+	display:none;
+}
+#xian{
+	margin:0;
+	padding:0px
+	
+}
+#text-box{
+	padding:10px;
+	border-bottom:1px solid lightgray;
+}
+#textarea{
+	width:100%;
+	height:60px;
+	resize: none;
+	outline:none;
+	border-radius:6px;
+}
+#text-box span{
+	color:darkgray;
+}
+#words-list{
+	padding:10px;
+}
+.words-item{
+	border-bottom:1px dashed lightgray;
+}
+.words-item h3{
+	display:inline-block;
+}
+.words-item a{
+	margin-top:10px;
+}

@@ -1,0 +1,21 @@
+
+#main{
+	border:3px solid #4169E1;
+	border-radius:8px;
+	width:600px;
+    height:700px;
+    margin:50px auto;
+    box-shadow: -5px -5px 3px gray ;
+}
+h2{
+	display:block;
+	margin:30px 0;
+	text-align:center;
+	color:#4169E1;
+}
+.btn{
+	margin:5px 0 0 150px;
+}
+#checkbox{
+	padding:10px;
+}

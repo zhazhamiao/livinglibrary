@@ -1,0 +1,34 @@
+body{
+	background: #F5F5F5;
+	min-width: ;
+}
+.container{
+	/*min-height: 520px;*/
+}
+#main{
+	width: 100%;
+	margin: 60px auto;
+}
+#form{
+	
+}
+#left-img{
+	width: 100%;
+	margin: 10px auto;
+	border-radius: 10px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+#num,#password,#l_select,#b_login,#b_reset{
+	box-shadow: none;
+}
+#b_login,#b_reset{
+	width: 100%;
+	margin: 10px auto;
+}
+#l-right{
+	margin: 6px auto;
+}
+

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap4.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/aindex.css" />
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.cookie.js"></script>
+		<script src="js/bootstrap4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/bootstrap-paginator.min.js"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/aindex.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/delayLoading.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	
+	<style type="text/css">
+*{
+	margin: 	0;
+	padding: 0;
+}
+
+
+.box{
+	margin-top: 80px;
+	width: 100%;
+	height: 340px;
+
+	position: relative;
+}
+
+.box .list{
+	width: 1200px;
+	height: 300px;
+	overflow: hidden;
+	position: absolute;
+	left: 50%;
+	margin-left: -600px;
+}
+
+.box .btn1{
+	position: absolute;
+	top: 50%;
+	margin-top: -50px;
+	width: 60px;
+	height: 100px;
+	line-height: 100px;
+	font-size: 30px;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	background: rgba(0,255,0,.5);
+	cursor: pointer;
+}
+.box .next{
+	right: 0;
+}
+
+.box li{
+	position: absolute;
+	top: 0;
+	left: 0;
+	list-style: none;
+	opacity: 0;
+	transition: all 0.3s ease-out;
+}
+.box img{
+	width: 751px;
+	height: 300px;
+	border:none;
+	float: left;
+}
+.box .p1{
+	transform:translate3d(-224px,0,0) scale(0.81);
+}
+.box .p2{
+	transform:translate3d(0px,0,0) scale(0.81);
+	transform-origin:0 50%;
+	opacity: 0.8;
+	z-index: 2;
+}
+.box .p3{
+	transform:translate3d(224px,0,0) scale(1);
+	z-index: 3;
+	opacity: 1;
+}
+.box .p4{
+	transform:translate3d(449px,0,0) scale(0.81);
+	transform-origin:100% 50%;
+	opacity: 0.8;
+	z-index: 2;
+}
+.box .p5{
+	transform:translate3d(672px,0,0) scale(0.81);
+}
+.box .p6{
+	transform:translate3d(896px,0,0) scale(0.81);
+}
+.box .p7{
+	transform:translate3d(1120px,0,0) scale(0.81);
+}
+
+.box .buttons{
+	position: absolute;
+	width: 1200px;
+	height: 30px;
+	bottom: 0;
+	left: 50%;
+	margin-left: -600px;
+	text-align: center;
+	padding-top: 10px;
+}
+.box .buttons a{
+	display: inline-block;
+	width: 35px;
+	height: 5px;
+	padding-top: 4px;
+	cursor: pointer;
+}
+.box span{
+	display: block;
+	width: 35px;
+	height: 1px;
+	background: red;
+}
+.box .blue{
+	background: blue;
+}
+</style>
+
+	<body>
+		<div id="all">
+			<nav class="navbar navbar-expand-md navbar-light">
+			<div  id="logo">
+					<img src="images/logo.png" />
+			</div>
+				
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+				<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="/aindex">首页</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">消息  </a>
+							<div class="dropdown-menu" style="padding:0;margin:0;">
+								<div class="card" style="width: 23rem;padding:0;margin:0;">
+								  <div class="card-body" style="padding:0;margin:0;">
+								    <div class="list-group notice">
+									 
+									</div>
+								  </div>
+								</div>
+							</div>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="/avedio">直播</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link personal" href="#">个人中心</a>
+						</li>
+						<!-- <li class="nav-item">
+							<a class="nav-link" href="#" id="navbardrop" >
+								消息 <span class="badge badge-danger">4</span>
+							</a> -->
+						<!-- 	<div class="dropdown-menu">
+								<a class="dropdown-item" href="#">轻云蔽月</a>
+								<a class="dropdown-item" href="#">流风回雪</a>
+								<a class="dropdown-item" href="#">翩若惊鸿</a>
+								<a class="dropdown-item" href="#">婉若游龙</a>
+							</div> -->
+						</li>
+						
+						
+						
+						<li class="nav-item">
+							<a class="nav-link" href="/alogin" id="d_login">登录</a>
+							<a class="nav-link" id="welcome">欢迎您&nbsp;<span id="s_name"></span></a>
+						</li>
+						
+						<li class="nav-item" id="out">
+							<a class="nav-link" id="logout" href="#">退出</a>
+						</li>
+						<li class="nav-item" id="register">
+							<a class="nav-link" href="#">注册</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-2 col-md-2 col-lg-2" id="logo">
+						
+					</div>
+					<!-- <div class="input-group col-sm-10 col-md-10 col-lg-10" id="search-div">
+					    <input type="text" class="form-control" id="s_input" placeholder="搜索一下，你就知道！" />
+					    <input type="button" class="btn btn-primary" id="s_btn" style="border-radius: 0 6px 6px 0;" value="搜索"/>
+						<span class="btn btn-primary" style="border-radius: 0 6px 6px 0;">搜索</span>
+					</div> -->
+				</div>
+				<div id="result" style="margin: 20px auto;">
+				    <h3><kbd class="category-title">搜索结果</kbd></h3>
+					<div id="s_xian" class="row"></div>
+					
+					<div id="example">
+						<ul id="pageLimit"></ul>
+					</div>
+				</div>
+				<div id="main">
+					<div class="box">
+					
+						<div id= "img-box" class="list">
+							<ul>
+								
+							</ul>
+						</div>
+					<!-- 	
+						<a href="javascript:;" class="prev btn1"><</a>
+						<a href="javascript:;" class="next btn1">></a> -->
+					
+						<div class="buttons">
+							<a href="javascript:;"><span class="blue"></span></a>
+							<a href="javascript:;"><span></span></a>
+							<a href="javascript:;"><span></span></a>
+							<a href="javascript:;"><span></span></a>
+							<a href="javascript:;"><span></span></a>
+							<a href="javascript:;"><span></span></a>
+							<a href="javascript:;"><span></span></a>
+						</div>
+					</div>
+
+
+
+					<div id="main-part">
+						<div class="showp">
+							<div class="showp-head">
+		                                <h3><kbd class="category-title">近期相约</kbd></h3>
+		                                <!-- <h5 class="clearFix"><a href="/amore?GuestType=1"><kbd class="showp-more">更多>>></kbd></a></h5> -->
+		                            </div>
+							<div class="showp-con">
+								<div class="row showp-con-right" id="early">
+									
+								</div>
+							</div>
+						</div>
+
+						<div class="showp">
+							
+							<div class="showp-head">
+                                <h3><kbd class="category-title">往期回顾</kbd></h3>
+                                <!-- <h5 class="clearFix"><a href="/amore?GuestType=1"><kbd class="showp-more">更多>>></kbd></a></h5> -->
+                            </div>
+							
+							<div class="showp-con">
+								<div class="row showp-con-right" id="mates">
+									
+								</div>
+							</div>
+						</div>
+						<div class="showp">
+							
+							<div class="showp-con">
+								<div class="row showp-con-right" id="social">
+									
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+			<div id="foot">
+				<hr/>
+				<div id="" align="center">
+					<p>Copyright© 南昌航空大学图书馆,All Rights Reserved</p>
+
+					<p>管理员email：niatliby@163.com Tel：83863778转8016 83953350&nbsp;
+						<span>相关链接:&nbsp;
+						        <a href="http://gxszk.nchu.edu.cn/">省高校思政网</a>&nbsp;
+						        <a href="http://tsg.jxnu.edu.cn/tgw/">省高校团工委</a>
+						    </span>
+					</p>
+				</div>
+			</div>
+
+		</div>
+			<script type="text/javascript">
+	var $a=$(".box .buttons a");
+	var $s=$(".box .buttons span");
+	var cArr=["p7","p6","p5","p4","p3","p2","p1"];
+	var index=0;
+	$(".next").click(
+		function(){
+		nextimg();
+		}
+	)
+	$(".prev").click(
+		function(){
+		previmg();
+		}
+	)
+	//上一张
+	function previmg(){
+		cArr.unshift(cArr[6]);
+		cArr.pop();
+		//i是元素的索引，从0开始
+		//e为当前处理的元素
+		//each循环，当前处理的元素移除所有的class，然后添加数组索引i的class
+		$(".box li").each(function(i,e){
+			$(e).removeClass().addClass(cArr[i]);
+		})
+		index--;
+		if (index<0) {
+			index=6;
+		}
+		show();
+	}
+	
+	//下一张
+	function nextimg(){
+		cArr.push(cArr[0]);
+		cArr.shift();
+		$(".box li").each(function(i,e){
+			$(e).removeClass().addClass(cArr[i]);
+		})
+		index++;
+		if (index>6) {
+			index=0;
+		}
+		show();
+	}
+	
+	//通过底下按钮点击切换
+	$a.each(function(){
+		$(this).click(function(){
+			var myindex=$(this).index();
+			var b=myindex-index;
+			if(b==0){
+				return;
+			}
+			else if(b>0) {
+				/*
+				 * splice(0,b)的意思是从索引0开始,取出数量为b的数组
+				 * 因为每次点击之后数组都被改变了,所以当前显示的这个照片的索引才是0
+				 * 所以取出从索引0到b的数组,就是从原本的这个照片到需要点击的照片的数组
+				 * 这时候原本的数组也将这部分数组进行移除了
+				 * 再把移除的数组添加的原本的数组的后面
+				 */
+				var newarr=cArr.splice(0,b);
+				cArr=$.merge(cArr,newarr);
+				$(".box li").each(function(i,e){
+				$(e).removeClass().addClass(cArr[i]);
+				})
+				index=myindex;
+				show();
+			}
+			else if(b<0){
+				/*
+				 * 因为b<0,所以取数组的时候是倒序来取的,也就是说我们可以先把数组的顺序颠倒一下
+				 * 而b现在是负值,所以取出索引0到-b即为需要取出的数组
+				 * 也就是从原本的照片到需要点击的照片的数组
+				 * 然后将原本的数组跟取出的数组进行拼接
+				 * 再次倒序,使原本的倒序变为正序
+				 */
+				cArr.reverse();
+				var oldarr=cArr.splice(0,-b)
+				cArr=$.merge(cArr,oldarr);
+				cArr.reverse();
+				$(".box li").each(function(i,e){
+				$(e).removeClass().addClass(cArr[i]);
+				})
+				index=myindex;
+				show();
+			}
+		})
+	})
+	
+	//改变底下按钮的背景色
+	function show(){
+			$($s).eq(index).addClass("blue").parent().siblings().children().removeClass("blue");
+	}
+	
+	//点击class为p2的元素触发上一张照片的函数
+	$(document).on("click",".box .p2",function(){
+		previmg();
+		return false;//返回一个false值，让a标签不跳转
+	});
+	
+	//点击class为p4的元素触发下一张照片的函数
+	$(document).on("click",".box .p4",function(){
+		nextimg();
+		return false;
+	});
+	
+	//			鼠标移入box时清除定时器
+	$(".box").mouseover(function(){
+		clearInterval(timer);
+	})
+	
+	//			鼠标移出box时开始定时器
+	$(".box").mouseleave(function(){
+		timer=setInterval(nextimg,4000);
+	})
+	
+	//			进入页面自动开始定时器
+	timer=setInterval(nextimg,4000);
+	</script>
+	</body>
+
+
+</html>

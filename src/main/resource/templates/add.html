@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/add.css"/>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap-paginator.min.js"></script>
+    <script type="text/javascript" src="../js/add.js"></script>
+    <title>添加数据</title>
+</head>
+<body>
+    <div id="all">
+    <div id="header">
+        <a href="http://lib.nchu.edu.cn/"><img src="../images/biaoti.jpg" class="img-responsiv" ></a>
+    </div>
+    <div id="main">
+            <div id="head">
+                <h2>综合信息表</h2>
+                <div id="right" class="row">
+                    <div class="col-lg-10 col-sm-10 col-md-10">
+                    <div class="input-group">
+                        <input type="text" id="tab_search" class="form-control" placeholder="请输入姓名！">
+                          <span class="input-group-btn">
+                            <button class="btn btn-default" id="search" type="button">搜索 <span class="glyphicon glyphicon-search"></span></button>
+                          </span>
+                    </div><!-- /input-group -->
+                    </div>
+                    <div class="col-lg-2 col-sm-2 col-md-2">
+                        <button id="a_add" class="btn btn-info">新增</button>
+                    </div>
+                </div>
+            </div>
+            <div id="table">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr class="row">
+                        <th class="col-lg-1">序号</th>
+                        <th class="col-lg-1">姓名</th>
+                        <th class="col-lg-2">出生日期</th>
+                        <th class="col-lg-2">类别
+                        	<select id="sel">
+                        		<option value="2">知名校友</option>
+                                <option value="3">社会代表</option>
+                                <option value="1">近期相约</option>
+                            </select>
+                        	
+                        </th>
+                        <th class="col-lg-1">专业</th>
+                        <th class="col-lg-1">照片</th>
+                        <th class="col-lg-2">简介</th>
+                        <th class="col-lg-2">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="Userlist">
+                        
+                    </tbody>
+                </table>
+                 <div id="example" style="text-align: center"><ul id="pageLimit"></ul></div>
+       			 </div>
+       			<div>
+       				 <hr align="center" width="100%"/>
+	       			<div id="error">	
+	       			 	<img alt="Not Found" src="../images/notfound.png">
+	       			 	<h3>没有此人，请点击新增，或重新输入姓名！</h3>
+	       			 </div>
+       			 </div>
+            </div>
+        </div>
+        <!--弹出框&#45;&#45;增加个人信息-->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">增加个人信息</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form"  id="addform" enctype="multipart/form-data" class="form-horizontal">
+                            <div class="form-group">
+                                <label for="g_name" class="col-sm-2 control-label">姓名：</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="g_name" placeholder="请输入名字">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="g_birdata" class="col-sm-2 control-label">出生日期:</label>
+                                <div class="col-sm-6">
+                                    <input type="date" class="form-control" id="g_birdata" placeholder="请选择日期">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="g_class" class="col-sm-2 control-label">类别：</label>
+                                <div class="col-sm-6">
+                                    <select class="form-control" id="g_class">
+                                        <option value="1">知名校友</option>
+                                        <option value="2"selected>社会代表</option>
+                                        <option value="3">近期相约</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="g_work" class="col-sm-2 control-label">专业：</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="g_work" placeholder="请输入专业">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="g_photo" class="col-sm-2 control-label">照片：</label>                               
+                                <div class="col-sm-4" id="d_photo">
+                                    <span class="upload-img"><input type="file" class="form-control" id="g_photo" placeholder="请上传照片"></span>
+                                </div>
+                                <div id="imgPreview"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="g_detial" class="col-sm-2 control-label">详情：</label>
+                                <div class="col-sm-6">
+                                    <textarea class="form-control" id="g_detial" placeholder="请输入详细信息！"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                             	 <label for="g_birdata" class="col-sm-2 control-label">是否显示:</label>
+                             	 <div class="col-sm-6" id="isShow">
+	                                 <label class="radio-inline">
+								     <input type="radio" name="is_show" value="yes" checked>是
+								     </label>
+								     <label class="radio-inline">
+								     <input type="radio" name="is_show" value="no">否
+								     </label>
+							     </div>
+                           </div>
+                        <div class="modal-footer">
+                            <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 提交</button>
+                            <button type="reset" class="btn btn-default"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> 重置</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+         <!--弹出框&#45;&#45;是否删除这条数据-->
+        <div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">警告！</h4>
+                    </div>
+                    <div class="modal-body">
+                    <h3>是否删除这条数据？？？</h3>
+                    
+                    </div>
+                    <div class="modal-footer">
+                          <button type="button" id="btn_del" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>确定</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> 取消</button>
+                    </div>
+                  </div>
+             </div>
+        </div>
+                     
+</body>
+</html>

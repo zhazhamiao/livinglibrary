@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap4.min.css" />
+		<link rel="stylesheet" href="./lib/layui/css/layui.css">
+		<link rel="stylesheet" type="text/css" href="../css/aindex.css" />
+		<link rel="stylesheet" type="text/css" href="../css/personal.css" />
+   		 
+   
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.cookie.js"></script>
+		<script src="js/bootstrap4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/bootstrap-paginator.min.js"></script>
+		 <script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/personal.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/delayLoading.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	
+	<style type="text/css">
+*{
+	margin: 	0;
+	padding: 0;
+}
+
+
+.box{
+	margin-top: 80px;
+	width: 100%;
+	height: 340px;
+
+	position: relative;
+}
+
+.box .list{
+	width: 1200px;
+	height: 300px;
+	overflow: hidden;
+	position: absolute;
+	left: 50%;
+	margin-left: -600px;
+}
+
+.box .btn1{
+	position: absolute;
+	top: 50%;
+	margin-top: -50px;
+	width: 60px;
+	height: 100px;
+	line-height: 100px;
+	font-size: 30px;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	background: rgba(0,255,0,.5);
+	cursor: pointer;
+}
+.box .next{
+	right: 0;
+}
+
+.box li{
+	position: absolute;
+	top: 0;
+	left: 0;
+	list-style: none;
+	opacity: 0;
+	transition: all 0.3s ease-out;
+}
+.box img{
+	width: 751px;
+	height: 300px;
+	border:none;
+	float: left;
+}
+.box .p1{
+	transform:translate3d(-224px,0,0) scale(0.81);
+}
+.box .p2{
+	transform:translate3d(0px,0,0) scale(0.81);
+	transform-origin:0 50%;
+	opacity: 0.8;
+	z-index: 2;
+}
+.box .p3{
+	transform:translate3d(224px,0,0) scale(1);
+	z-index: 3;
+	opacity: 1;
+}
+.box .p4{
+	transform:translate3d(449px,0,0) scale(0.81);
+	transform-origin:100% 50%;
+	opacity: 0.8;
+	z-index: 2;
+}
+.box .p5{
+	transform:translate3d(672px,0,0) scale(0.81);
+}
+.box .p6{
+	transform:translate3d(896px,0,0) scale(0.81);
+}
+.box .p7{
+	transform:translate3d(1120px,0,0) scale(0.81);
+}
+
+.box .buttons{
+	position: absolute;
+	width: 1200px;
+	height: 30px;
+	bottom: 0;
+	left: 50%;
+	margin-left: -600px;
+	text-align: center;
+	padding-top: 10px;
+}
+.box .buttons a{
+	display: inline-block;
+	width: 35px;
+	height: 5px;
+	padding-top: 4px;
+	cursor: pointer;
+}
+.box span{
+	display: block;
+	width: 35px;
+	height: 1px;
+	background: red;
+}
+.box .blue{
+	background: blue;
+}
+</style>
+
+	<body>
+		<div id="all">
+			<nav class="navbar navbar-expand-md navbar-light">
+			<div  id="logo">
+					<img src="images/logo.png" />
+			</div>
+				
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+				<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="/aindex">首页</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">消息  </a>
+							<div class="dropdown-menu" style="padding:0;margin:0;">
+								<div class="card" style="width: 23rem;padding:0;margin:0;">
+								  <div class="card-body" style="padding:0;margin:0;">
+								    <div class="list-group notice">
+									 
+									</div>
+								  </div>
+								</div>
+							</div>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="/avedio">直播</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link personal" href="#">个人中心</a>
+						</li>
+						<!-- <li class="nav-item">
+							<a class="nav-link" href="#" id="navbardrop" >
+								消息 <span class="badge badge-danger">4</span>
+							</a> -->
+						<!-- 	<div class="dropdown-menu">
+								<a class="dropdown-item" href="#">轻云蔽月</a>
+								<a class="dropdown-item" href="#">流风回雪</a>
+								<a class="dropdown-item" href="#">翩若惊鸿</a>
+								<a class="dropdown-item" href="#">婉若游龙</a>
+							</div></li> -->
+						
+						
+						
+						
+						<li class="nav-item">
+							<a class="nav-link" href="/alogin" id="d_login">登录</a>
+							<a class="nav-link" id="welcome">欢迎您&nbsp;<span id="s_name"></span></a>
+						</li>
+						
+						<li class="nav-item" id="out">
+							<a class="nav-link" id="logout" href="#">退出</a>
+						</li>
+						<li class="nav-item" id="register">
+							<a class="nav-link" href="#">注册</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+			<div class="container nk-main clearfix">
+				<div id="infoheader">
+					<div class="profile-level level1"></div>
+					<div class="profile-info-main">
+						<a class="head-pic  js-self-avatar ">
+							<img alt="头像" src="img/1.jpg">
+							
+						</a>
+						<div class="profile-info-cont">
+							<section>
+								<a class="profile-user-name level-color-7" href="javascript:void(0);" data-tips-index="1"></a>
+								<span class="sex-ico" data-title="男" data-tips-index="2"></span>
+								
+							</section>
+							<ul class="profile-cont clearfix">
+								<li class="profile-city"><i class="ico-pcity"></i></li>
+								<li class="profile-work"><i class="ico-pwork"></i></li>
+								<li class="profile-edu"><i class="ico-pedu"></i></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="profile-oprt-box">
+						<a class="btn btn-primary btn-sm" href="/my-info"><i class="icon-pencil"></i>编辑</a>
+						
+					</div>
+
+				</div>
+
+				<div class="nk-bar">
+					<div class="module-box">
+						<ul class="profile-menu">
+							<li>
+								<a href="/personal" >
+									<i class="profile-icon p-ico-home"></i> 首页
+									<i class="icon-angle-right"></i>
+								</a>
+							</li>
+							<li>
+								<a href="/my-message">
+									<i class="profile-icon p-ico-subject "></i> 我的消息
+									<i class="icon-angle-right"></i>
+								</a>
+							</li>
+							<li>
+								<a href="/my-join">
+									<i class="profile-icon p-ico-class"></i> 我的参与
+									<i class="icon-angle-right"></i>
+								</a>
+							</li>
+							<li>
+								<a href="/my-comment">
+									<i class="profile-icon p-ico-answer "></i> 我的评论
+									<i class="icon-angle-right"></i>
+								</a>
+							</li>
+							
+							<li>
+								<a href="/my-info"  class="selected">
+									<i class="profile-icon p-ico-info"></i> 基本资料
+									<i class="icon-angle-right"></i>
+								</a>
+							</li>
+							<li>
+								<a href="/my-setting">
+									<i class="profile-icon p-ico-set"></i> 设置
+									<i class="icon-angle-right"></i>
+								</a>
+							</li>
+							
+						</ul>
+					</div>
+				</div>
+
+				<div class="nk-content">
+					<div class="module-box">
+						<div class="profile-caption">
+							<span class="ctr-btn-box">
+							<a class="btn btn-info-edit btn-primary alert" href="javascript:void(0);">编辑</a>
+							</span>
+							<h3 class="info-title prf-base">基本信息</h3>
+							
+							
+							<form class="layui-form">
+					          <div class="layui-form-item">
+					              <label for="L_stuid" class="layui-form-label">
+					                  <span class="x-red">*</span>学号
+					              </label>
+					              <div class="layui-input-inline">
+					                  <input type="text" id="L_stuid" name="stuid" required="" 
+					                  autocomplete="off" class="layui-input"  disabled>
+					              </div>
+					              <div class="layui-form-mid layui-word-aux">
+					                  <span class="x-red">*</span>将会成为您唯一的登入名
+					              </div>
+					          </div>
+					          <div class="layui-form-item">
+					              <label for="L_username" class="layui-form-label">
+					                  <span class="x-red">*</span>姓名
+					              </label>
+					              <div class="layui-input-inline">
+					                  <input type="text" id="L_username" name="username" required="" lay-verify="nikename"
+					                  autocomplete="off" class="layui-input" disabled>
+					              </div>
+					          </div>
+					           <div class="layui-form-item">
+							    <label class="layui-form-label">性别</label>
+							    <div class="layui-input-block">
+							      <input type="radio" name="sex" value="1" title="男" disabled>
+							      <input type="radio" name="sex" value="0" title="女" disabled>
+							    </div>
+							  </div>
+					           <div class="layui-form-item">
+					              <label for="L_college" class="layui-form-label">
+					                  <span class="x-red">*</span>学校
+					              </label>
+					              <div class="layui-input-inline">
+					                  <input type="text" id="L_college" name="college" required=""
+					                  autocomplete="off" class="layui-input" disabled>
+					              </div>
+					          </div>
+					           <div class="layui-form-item">
+					              <label for="L_phone" class="layui-form-label">
+					                  <span class="x-red">*</span>电话
+					              </label>
+					              <div class="layui-input-inline">
+					                  <input type="text" id="L_phone" name="phone" required="" lay-verify="number"
+					                  autocomplete="off" class="layui-input" disabled>
+					              </div>
+					          </div>
+					          <div class="layui-form-item">
+					              <label for="L_phone" class="layui-form-label">
+					                  	邮箱
+					              </label>
+					              <div class="layui-input-inline">
+					                  <input type="text" id="L_email" name="email" required="" lay-verify=""
+					                  autocomplete="off" class="layui-input" disabled>
+					              </div>
+					          </div>
+					          <div class="layui-form-item">
+							    <label class="layui-form-label">类型</label>
+							    <div class="layui-input-block">
+							      <input type="radio" name="type" value="1" title="学生" disabled>
+							      <input type="radio" name="type" value="2" title="管理员" disabled>
+							    </div>
+							  </div>
+							  <div class="layui-form-item">
+					              <label for="L_pass" class="layui-form-label">
+					                  <span class="x-red">*</span>密码
+					              </label>
+					              <div class="layui-input-inline">
+					                  <input type="password" id="L_pass" name="pass" required="" lay-verify="pass"
+					                  autocomplete="off" class="layui-input" disabled>
+					              </div>
+					              <div class="layui-form-mid layui-word-aux">
+					                  6到16个字符
+					              </div>
+					          </div>
+					          <div class="layui-form-item">
+					              <label for="L_repass" class="layui-form-label">
+					                  <span class="x-red">*</span>确认密码
+					              </label>
+					              <div class="layui-input-inline">
+					                  <input type="password" id="L_repass" name="repass" required="" lay-verify="repass"
+					                  autocomplete="off" class="layui-input" disabled>
+					              </div>
+					          </div>
+					          <div class="layui-form-item btnalert" style="display:none">
+					              <label for="L_repass" class="layui-form-label">
+					              </label>
+					              <button  class="layui-btn" lay-filter="add" lay-submit="">
+					                  修改
+					              </button>
+					          </div>
+					      </form>
+							
+						</div>
+					</div>
+				</div>
+			
+			</div>
+			<div id="foot">
+				<hr/>
+				<div id=""  style="clear: both;" align="center">
+					<p>Copyright© 南昌航空大学图书馆,All Rights Reserved</p>
+
+					<p>管理员email：niatliby@163.com Tel：83863778转8016 83953350&nbsp;
+						<span>相关链接:&nbsp;
+						        <a href="http://gxszk.nchu.edu.cn/">省高校思政网</a>&nbsp;
+						        <a href="http://tsg.jxnu.edu.cn/tgw/">省高校团工委</a>
+						    </span>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	<script type="text/javascript">
+	
+	$(".alert").click(function(){
+		
+		$("#L_username").attr("disabled",false);
+		
+		
+		$("input:radio[name=sex]").attr("disabled",false);
+		
+		$("#L_college").attr("disabled",false);
+		$("#L_phone").attr("disabled",false);
+		$("#L_email").attr("disabled",false);
+		
+		
+		$("#L_pass").attr("disabled",false);
+		$("#L_repass").attr("disabled",false);
+		$(".btnalert").css("display","block");
+		 layui.use(['form','layer'], function(){
+	         $ = layui.jquery;
+	       var form = layui.form
+	       ,layer = layui.layer;
+	       
+	       form.render();
+		 });
+	})
+	
+	$.ajax({
+		url:"getUserInfo",
+		data:{
+			stuid:$.cookie("stuid"),
+		},
+		success:function(data){
+			$("#L_stuid").val(data.stuid);
+			$("#L_username").val(data.name);
+			
+			if(data.sex==0){
+				$("input:radio[name=sex][value=0]").attr("checked",true); 
+			}else{
+				$("input:radio[name=sex][value=1]").attr("checked",true); 
+			}
+			$("#L_college").val(data.college);
+			$("#L_phone").val(data.phone);
+			$("#L_email").val(data.email);
+			if(data.type==1){
+				$("input:radio[name=type][value=1]").attr("checked",true); 
+			}else{
+				$("input:radio[name=type][value=2]").attr("checked",true); 
+			}
+			$("#L_pass").val(data.password);
+			$("#L_repass").val(data.password);
+			
+		}
+	})
+	
+	 layui.use(['form','layer'], function(){
+         $ = layui.jquery;
+       var form = layui.form
+       ,layer = layui.layer;
+     
+       //自定义验证规则
+        form.verify({
+         pass: [/(.+){6,12}$/, '密码必须6到12位']
+         ,repass: function(value){
+             if($('#L_pass').val()!=$('#L_repass').val()){
+                 return '两次密码不一致';
+             }
+         }
+       });  
+
+       //监听提交
+       form.on('submit(add)', function(data){
+         console.log(data);
+         //发异步，把数据提交给php
+         
+         $.ajax({
+       	  url:"/updateuserbyself",
+       	  type:"POST",
+       	  data:data.field,
+       	  success:function(data){
+       		  if(data==1){
+       			  layer.alert("修改成功", {icon: 6},function () {
+       	              // 获得frame索引
+       	              window.location.reload();
+       	          });
+       		  }
+       	  }
+         })
+         
+        
+         return false;
+       });
+       
+       
+     });
+   
+	</script>
+	</body>
+
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./js/xadmin.js"></script>
+    <script type="text/javascript" src="./js/cate.js"></script>
+    
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  <body>
+    <div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">演示</a>
+        <a>
+          <cite>评论审核</cite></a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+    </div>
+    <div class="x-body">
+      <xblock>
+        <button class="layui-btn layui-btn-normal"><i class="layui-icon">&#xe642;</i>评论审核</button>
+        <span class="x-right" style="line-height:40px">共有数据：<span class="static"></span>条</span>
+      </xblock>
+      <table class="layui-table layui-form">
+        <thead>
+          <tr>
+            <th width="20">
+              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+            </th>
+            <th width="20">ID</th>
+            <th width="70">期刊</th>
+            <th width="50">评论人</th>
+            <th>评论</th>
+            <th width="70">积极率</th>
+            <th width="50">AI推荐</th>
+            <th width="180">操作</th>
+        </thead>
+        <tbody class="x-cate">
+         
+        </tbody>
+      </table>
+    </div>
+	<div class="page">
+		<div>
+				
+		</div>
+	</div>
+    <script>
+   
+      layui.use(['form'], function(){
+        form = layui.form;
+        
+      });
+      /*评论-展示*/
+      function comment_show(obj,id){
+          
+    	  $.ajax({
+    		  url:"/updatecomment",
+    		  type:"POST",
+    		  data:{
+    			  id:id,
+    			  isshow:1,
+    		  },
+    		  success:function(data){
+    			  if(data==1){
+    				//发异步通过数据
+    		           $(obj).parents("tr").remove();
+    		           layer.msg('已通过!',{icon:1,time:500});
+    			  }
+    		  }
+    	  });
+      }
+      
+      /*评论-隐藏*/
+      function comment_hide(obj,id){
+         
+    	  $.ajax({
+    		  url:"/updatecomment",
+    		  type:"POST",
+    		  data:{
+    			  id:id,
+    			  isshow:2, //隐藏
+    		  },
+    		  success:function(data){
+    			  if(data==1){
+    				//发异步通过数据
+    		           $(obj).parents("tr").remove();
+    		           layer.msg('已隐藏!',{icon:1,time:500});
+    			  }
+    		  }
+    	  });
+          
+      }
+
+      /*评论-删除*/
+      function comment_del(obj,id){
+          layer.confirm('确认要删除吗？',function(index){
+              //发异步删除数据
+              
+               $.ajax({
+    		  url:"/updatecomment",
+    		  type:"POST",
+    		  data:{
+    			  id:id,
+    			  isshow:3, //隐藏
+    		  },
+    		  success:function(data){
+    			  if(data==1){
+    				//发异步通过数据
+    		           $(obj).parents("tr").remove();
+    		           layer.msg('已删除!',{icon:1,time:500});
+    			  }
+    		  }
+    	  });
+              
+             
+          });
+      }
+
+    </script>
+  
+  </body>
+
+</html>

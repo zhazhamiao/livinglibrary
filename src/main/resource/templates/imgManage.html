@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport"
+			content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="./css/font.css">
+		<link rel="stylesheet" href="./css/xadmin.css">
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap4.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/img-manage.css"/>
+		<script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/bootstrap4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>
+		<script type="text/javascript" src="./js/xadmin.js"></script>
+		<script src="/js/img-manage.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+	<div class="x-nav">
+		<span class="layui-breadcrumb"> <a href="">首页</a> <a href="">轮播图管理</a>
+			<a> <cite>轮播图管理</cite></a>
+		</span> <a class="layui-btn layui-btn-small"
+			style="line-height: 1.6em; margin-top: 3px; float: right"
+			href="javascript:location.replace(location.href);" title="刷新"> <i
+			class="layui-icon" style="line-height: 30px">ဂ</i></a>
+	</div>
+		<div style="padding:10px 50px 20px 40px">
+			<div id="demo" class="carousel slide" data-ride="carousel">
+
+				<!-- 指示符 -->
+				<ul class="carousel-indicators" id="playTag"></ul>
+
+				<!-- 轮播图片 -->
+				<div class="carousel-inner" id="bigBox"></div>
+
+				<!-- 左右切换按钮 -->
+				<a class="carousel-control-prev" href="#demo" data-slide="prev">
+					<span class="carousel-control-prev-icon"></span>
+				</a>
+				<a class="carousel-control-next" href="#demo" data-slide="next">
+					<span class="carousel-control-next-icon"></span>
+				</a>
+
+			</div>
+
+			<div class="img-manage">
+				<div class="row">
+					<div class="img-list col-sm-10 col-md-10 col-lg-10" align="center">
+						<!--略缩图列表-->
+						<ul class="list-box" id="listBox"></ul>
+					</div>
+					<div class="img-add col-sm-2 col-md-2 col-lg-2">
+						<input type="button" class="btn-outline-light btn" id="add-btn" value="添加图片" />
+						<input type="file" name="add-file" id="add-file" accept="image/jpeg,image/gif,image/png,image/jpg" style="display: none;" onchange="addImg(this)"/>
+						<input type="file" name="rep-file" id="rep-file" style="display: none;" onchange="repImg(this)"/>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</body>
+</html>

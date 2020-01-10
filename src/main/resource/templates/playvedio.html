@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap4.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/aindex.css" />
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dplayer/1.25.0/DPlayer.min.css">
+<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_632911_txk8xpvk1wk.css" />
+
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script src="js/bootstrap4.min.js" type="text/javascript"
+	charset="utf-8"></script>
+<script type="text/javascript" src="../js/bootstrap-paginator.min.js"></script>
+<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/delayLoading.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/flv.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dplayer/1.25.0/DPlayer.min.js"></script>
+</head>
+
+<style type="text/css">
+.Dplayer_box{overflow:hidden;width:980px;height:456px;margin:100px auto;display:block;border-top:1px solid #e5e9ef;border-bottom:1px solid #e5e9ef;background-color:#f6f9fa}#player1{background-size:100% 100%;margin-top:30px}.player_av{width:680px;height:100%;float:left;background:#000}.Dplayer_danmu{width:299px;float:right;height:100%}.Dplayer_watching{width:100%;height:60px;line-height:60px;display:inline-block;font-size:12px;color:#99a2aa;box-shadow:#ddd 0 0 5px}.Dplayer-watching-number{margin-left:20px;font-size:18px;font-weight:700;color:#222;padding:0}.Dplayer_list{width:100%;height:30px;overflow:hidden}.Dplayer_list li{width:60px;height:30px;float:left;color:#99a2aa;font-size:12px;text-align:center;line-height:30px}.Dplayer_list li:nth-child(1){width:58px!important}.Dplayer_list li:nth-child(2){width:136px!important}.list_ovefiow{width:100%;height:363px;overflow:auto}.danmuku_list{width:100%;height:20px;line-height:20px;text-align:left;color:#99a2aa;font-size:12px;display:block;margin:auto;overflow:auto;margin-top:5px}.danmuku_list li{float:left;width:60px;height:20px;white-space:nowrap;cursor:pointer}.danmuku_list li:nth-child(1){width:58px;margin-left:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.danmuku_list li:nth-child(2){width:125px;margin-right:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.danmuku_list li:nth-child(2):hover{color:#00a1d6}.danmuku_list li:nth-child(3){margin-left:5px}
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.box {
+	margin-top: 80px;
+	width: 100%;
+	height: 340px;
+	position: relative;
+}
+
+.box .list {
+	width: 1200px;
+	height: 300px;
+	overflow: hidden;
+	position: absolute;
+	left: 50%;
+	margin-left: -600px;
+}
+
+.box .btn1 {
+	position: absolute;
+	top: 50%;
+	margin-top: -50px;
+	width: 60px;
+	height: 100px;
+	line-height: 100px;
+	font-size: 30px;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	background: rgba(0, 255, 0, .5);
+	cursor: pointer;
+}
+
+.box .next {
+	right: 0;
+}
+
+.box li {
+	position: absolute;
+	top: 0;
+	left: 0;
+	list-style: none;
+	opacity: 0;
+	transition: all 0.3s ease-out;
+}
+
+.box img {
+	width: 751px;
+	height: 300px;
+	border: none;
+	float: left;
+}
+
+.box .p1 {
+	transform: translate3d(-224px, 0, 0) scale(0.81);
+}
+
+.box .p2 {
+	transform: translate3d(0px, 0, 0) scale(0.81);
+	transform-origin: 0 50%;
+	opacity: 0.8;
+	z-index: 2;
+}
+
+.box .p3 {
+	transform: translate3d(224px, 0, 0) scale(1);
+	z-index: 3;
+	opacity: 1;
+}
+
+.box .p4 {
+	transform: translate3d(449px, 0, 0) scale(0.81);
+	transform-origin: 100% 50%;
+	opacity: 0.8;
+	z-index: 2;
+}
+
+.box .p5 {
+	transform: translate3d(672px, 0, 0) scale(0.81);
+}
+
+.box .p6 {
+	transform: translate3d(896px, 0, 0) scale(0.81);
+}
+
+.box .p7 {
+	transform: translate3d(1120px, 0, 0) scale(0.81);
+}
+
+.box .buttons {
+	position: absolute;
+	width: 1200px;
+	height: 30px;
+	bottom: 0;
+	left: 50%;
+	margin-left: -600px;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.box .buttons a {
+	display: inline-block;
+	width: 35px;
+	height: 5px;
+	padding-top: 4px;
+	cursor: pointer;
+}
+
+.box span {
+	display: block;
+	width: 35px;
+	height: 1px;
+	background: red;
+}
+
+.box .blue {
+	background: blue;
+}
+
+.person-img {
+	width: 100%;
+	height: 200px;
+	border-radius: 10px 10px 0 0;
+}
+</style>
+
+<body>
+	<div id="all">
+		<nav class="navbar navbar-expand-md navbar-light">
+			<div id="logo">
+				<img src="images/logo.png" />
+			</div>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#collapsibleNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-end"
+				id="collapsibleNavbar">
+				<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="/aindex">首页</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">消息  </a>
+							<div class="dropdown-menu" style="padding:0;margin:0;">
+								<div class="card" style="width: 23rem;padding:0;margin:0;">
+								  <div class="card-body" style="padding:0;margin:0;">
+								    <div class="list-group notice">
+									 
+									</div>
+								  </div>
+								</div>
+							</div>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="/avedio">直播</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link personal" href="#">个人中心</a>
+						</li>
+						<!-- <li class="nav-item">
+							<a class="nav-link" href="#" id="navbardrop" >
+								消息 <span class="badge badge-danger">4</span>
+							</a> -->
+						<!-- 	<div class="dropdown-menu">
+								<a class="dropdown-item" href="#">轻云蔽月</a>
+								<a class="dropdown-item" href="#">流风回雪</a>
+								<a class="dropdown-item" href="#">翩若惊鸿</a>
+								<a class="dropdown-item" href="#">婉若游龙</a>
+							</div> -->
+						</li>
+						
+						
+						
+						<li class="nav-item">
+							<a class="nav-link" href="/alogin" id="d_login">登录</a>
+							<a class="nav-link" id="welcome">欢迎您&nbsp;<span id="s_name"></span></a>
+						</li>
+						
+						<li class="nav-item" id="out">
+							<a class="nav-link" id="logout" href="#">退出</a>
+						</li>
+						<li class="nav-item" id="register">
+							<a class="nav-link" href="#">注册</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+
+		<div class="container">
+
+			<div class="Dplayer_box">
+			<span class="id" style="display:none;" th:text="${id}"></span>
+			    <div class="player_av">
+			        <div id="player1"></div>
+			    </div>
+			
+			    <div class="Dplayer_danmu">
+			        <div class="Dplayer_watching">
+			            <span class="Dplayer-watching-number" title="这个数据是假的">24</span>
+			            人正在观看,<span class="danmuku_num">100</span>条弹幕
+			        </div>
+			
+			        <ul class="Dplayer_list">
+			            <li>时间</li>
+			            <li>发送内容</li>
+			            <li>用户类型</li>
+			        </ul>
+			        <ul class="list_ovefiow">
+			
+			        </ul>
+			
+			    </div>
+			</div>
+			
+			<div class="alert_back">加载中</div>
+			</div>
+
+	</div>
+	<div id="foot">
+		<hr />
+		<div id="" align="center">
+			<p>Copyright© 南昌航空大学图书馆,All Rights Reserved</p>
+
+			<p>
+				管理员email：niatliby@163.com Tel：83863778转8016 83953350&nbsp; <span>相关链接:&nbsp;
+					<a href="http://gxszk.nchu.edu.cn/">省高校思政网</a>&nbsp; <a
+					href="http://tsg.jxnu.edu.cn/tgw/">省高校团工委</a>
+				</span>
+			</p>
+		</div>
+	</div>
+
+<script>
+    
+    var id = $(".id").html();
+    var url="";
+    $.ajax({
+    	url:"getVedio",
+    	data:{
+    		id:id
+    	},
+    	success:function(data){
+    		 var dp = new DPlayer({
+    		        element: document.getElementById('player1'),
+    		        autoplay: false,
+    		        theme: '#FADFA3',
+    		        hotkey: true,
+    		        preload: 'auto',
+    		        lang: 'zh-cn',
+    		        screenshot: true,
+    		        video: {
+    		            url: data.url,
+    		           // pic: data.img,
+    		            type: 'auto'
+    		        },
+    		        /* danmaku: {
+    		            id: 'demo',
+    		            api: 'https://api.prprpr.me/dplayer/',
+    		            addition: ['https://api.prprpr.me/dplayer/bilibili?aid=15572523']
+    		        } */
+    		    });
+    	}
+    })
+    
+    
+   
+    // 弹出框
+    function alert_back(text) {
+        $(".alert_back").html(text).show();
+        setTimeout(function () {
+            $(".alert_back").fadeOut();
+        },1200)
+    }
+    //秒转分秒
+    function formatTime(seconds) {
+        return [
+//            parseInt(seconds / 60 / 60),
+            parseInt(seconds / 60 % 60),
+            parseInt(seconds % 60)
+        ]
+            .join(":")
+            .replace(/\b(\d)\b/g, "0$1");
+    }
+
+</script>
+</body>
+</html>

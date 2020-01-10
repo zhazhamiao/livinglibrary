@@ -1,0 +1,255 @@
+#infoheader{
+	position: relative;
+    margin-bottom: 10px;
+    height: 100px;
+    background: #fff;
+    clear: both;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    margin: 20px 0 0 0;
+}
+.level1 {
+    background: #25bb9b;
+}
+.profile-level {
+    width: 10px;
+    height: 100%;
+    border-radius: 3px 0 0 3px;
+    float: left;
+}
+.profile-info-main {
+    float: left;
+    padding: 20px 20px 0;
+}
+.head-pic {
+    border-radius: 50%;
+    display: block;
+    float: left;
+    margin-right: 10px;
+    overflow: hidden;
+    width: 60px;
+    height: 60px;
+}
+a {
+    color: #333;
+}
+.profile-info-cont {
+    margin-left: 80px;
+    padding-top: 5px;
+}
+a:link, a:visited {
+    text-decoration: none;
+}
+.profile-user-name {
+    max-width: 14em;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    vertical-align: middle;
+    line-height: 1;
+}
+.level-color-7 {
+    color: #fc7123!important;
+}
+.profile-info-wrapper .sex-ico {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 10px 0 5px;
+    background: url(//static.nowcoder.com/images/img/icons/icon-sex.png) no-repeat;
+}
+.profile-cont {
+    overflow: hidden;
+    margin: 15px 0;
+}
+.clearfix {
+    display: block;
+    position: relative;
+    
+    zoom: 1;
+}
+.profile-cont li {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 11em;
+}
+.profile-oprt-box {
+    position: absolute;
+    right: 20px;
+    top: 30px;
+}
+.profile-oprt-box .btn {
+    margin-left: 10px;
+}
+ .sex-ico {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 10px 0 5px;
+    background: url(//static.nowcoder.com/images/img/icons/icon-sex.png) no-repeat;
+}
+ .female-ico {
+    background-position: 0 -16px;
+}
+.profile-cont i {
+    background: url(//static.nowcoder.com/images/img/profile/icon-card.png) no-repeat;
+    display: inline-block;
+    width: 21px;
+    height: 16px;
+    vertical-align: text-bottom;
+    margin-right: 2px;
+}
+.profile-cont .ico-pcity {
+    background-position: 0 0;
+}
+.profile-cont .ico-pwork {
+    background-position: 0 -35px;
+}
+.profile-cont .ico-pedu {
+    background-position: 0 -67px;
+}
+div {
+    display: block;
+}
+.nk-bar {
+	width: 258px;
+    position: absolute;
+    left: 20px;
+    margin-top: 10px;
+}
+.module-box:last-child {
+    margin-bottom: 0;
+}
+.module-box {
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    background: #fff;
+}
+.module-box {
+    margin-bottom: 10px;
+    background: #fff;
+}
+ol, ul {
+    list-style: none;
+}
+article, aside, blockquote, body, button, code, dd, details, dl, dt, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hr, input, legend, li, menu, nav, ol, p, pre, section, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+}
+user agent stylesheet
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+.profile-menu li {
+    line-height: 40px;
+    font-size: 14px;
+    position: relative;
+}
+.profile-menu a.selected, .profile-menu a:hover {
+    background: #f6f6f6;
+}
+a.selected {
+    color: #25bb9b;
+}
+.profile-menu a {
+    display: block;
+    position: relative;
+}
+a:link, a:visited {
+    text-decoration: none;
+}
+.nk-content {
+    float: right;
+    width: 820px;
+    margin: 0 10px 0 0;
+    min-height: 600px;
+    
+}
+.module-box:last-child {
+    margin-bottom: 0;
+}
+.module-box {
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    background: #fff;
+}
+.module-box {
+    margin-bottom: 10px;
+    background: #fff;
+}
+.module-head {
+    padding: 15px 20px 0;
+    line-height: normal;
+    position: relative;
+}
+.clearfix {
+    display: block;
+    zoom: 1;
+}
+.paw-wrapper {
+    margin-right: -20px;
+}
+.module-body {
+    padding: 20px;
+}
+.p-ico-home {
+    background-position: 0 0;
+}
+.profile-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    background: url(//static.nowcoder.com/images/img/profile/icon-main4.png) no-repeat;
+}
+.p-ico-subject {
+    background-position: 0 -35px;
+}
+.p-ico-class {
+    background-position: 0 -76px;
+}
+.p-ico-answer {
+    background-position: 0 -153px;
+}
+.p-ico-info {
+    background-position: 0 -355px;
+}
+.p-ico-set {
+    background-position: 0 -396px;
+}
+.profile-caption {
+    padding-bottom: 5px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #d4d4d4;
+    overflow: hidden;
+    padding:5px;
+}
+.profile-caption .info-title {
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 13px;
+    line-height: 22px;
+    display: inline-block;
+}
+.ctr-btn-box {
+    float: right;
+    height:40px;
+    
+}
