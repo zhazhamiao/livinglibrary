@@ -304,8 +304,9 @@ public class ManagerService {
 	 */
 	@Transactional
 	public Integer addGuest(String guestname,String address,Integer allnum,String begintime,String endtime,Integer isshow,String imgpath,String summary) {
-		
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");  
+
+		String strDateFormat = "yyyy-MM-dd HH:mm:ss";
+		SimpleDateFormat sdf=new SimpleDateFormat(strDateFormat);
 		
 		Guest guest = new Guest();
 		guest.setAddress(address);

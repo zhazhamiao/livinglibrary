@@ -1,4 +1,4 @@
-var serverUrl = "http://10.1.79.22:8056/";
+var serverUrl = "";
 
 $(document).ready(function() {
 	var list = new Array();
